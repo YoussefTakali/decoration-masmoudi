@@ -22,13 +22,13 @@ import { CommonModule } from '@angular/common';
           <div class="image-side">
             <div class="image-grid">
               <div class="image-item large">
-                <img src="/assets/images/material-1.svg" alt="Material showcase 1" />
+                <img src="/assets/images/material1.jpg" alt="Material showcase 1" />
               </div>
               <div class="image-item">
-                <img src="/assets/images/material-2.svg" alt="Material showcase 2" />
+                <img src="/assets/images/material2.jpg" alt="Material showcase 2" />
               </div>
               <div class="image-item">
-                <img src="/assets/images/material-3.svg" alt="Material showcase 3" />
+                <img src="/assets/images/material3.jpg" alt="Material showcase 3" />
               </div>
             </div>
           </div>
@@ -50,9 +50,9 @@ import { CommonModule } from '@angular/common';
 
     .content-wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
     }
 
     .label {
@@ -95,15 +95,16 @@ import { CommonModule } from '@angular/common';
 
     .image-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 280px 280px;
       gap: 1.5rem;
+      height: 100%;
     }
 
     .image-item {
-      border-radius: 12px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      min-height: 250px;
       background: #f5f5f5;
       display: flex;
       align-items: center;
@@ -111,8 +112,8 @@ import { CommonModule } from '@angular/common';
     }
 
     .image-item.large {
-      grid-row: span 2;
-      min-height: 520px;
+      grid-row: 1 / 3;
+      grid-column: 1;
     }
 
     .image-item img {

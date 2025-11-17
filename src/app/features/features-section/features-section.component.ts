@@ -9,23 +9,25 @@ import { Feature } from '../../core/models';
   template: `
     <section class="features">
       <div class="container">
-        <h2 class="section-title">Why<br />Choosing Us</h2>
-        
-        <div class="features-grid">
-          @for (feature of features; track feature.title) {
-            <div class="feature-card">
-              <h3 class="title">{{ feature.title }}</h3>
-              <p class="description">{{ feature.description }}</p>
-              @if (feature.link) {
-                <a [href]="feature.link.url" class="link">
-                  {{ feature.link.text }}
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </a>
-              }
-            </div>
-          }
+        <div class="features-row">
+          <h2 class="section-title">Why<br />Choosing Us</h2>
+          
+          <div class="features-grid">
+            @for (feature of features; track feature.title) {
+              <div class="feature-card">
+                <h3 class="title">{{ feature.title }}</h3>
+                <p class="description">{{ feature.description }}</p>
+                @if (feature.link) {
+                  <a [href]="feature.link.url" class="link">
+                    {{ feature.link.text }}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>
     </section>
@@ -37,9 +39,15 @@ import { Feature } from '../../core/models';
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       padding: 0 2rem;
+    }
+
+    .features-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6rem;
     }
 
     .section-title {
@@ -47,17 +55,22 @@ import { Feature } from '../../core/models';
       font-weight: 700;
       color: #1a1a1a;
       line-height: 1.2;
-      margin: 0 0 3rem 0;
+      margin: 0;
+      flex-shrink: 0;
+      min-width: 250px;
+      margin-right: 3rem;
     }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7rem;
+      flex: 1;
     }
 
     .feature-card {
-      padding: 2rem 0;
+      padding: 0;
+      max-width: 450px;
     }
 
     .feature-card .title {
@@ -70,7 +83,7 @@ import { Feature } from '../../core/models';
     .feature-card .description {
       font-size: 1rem;
       color: #666;
-      line-height: 1.6;
+      line-height: 1.8;
       margin: 0 0 1rem 0;
     }
 
@@ -91,6 +104,11 @@ import { Feature } from '../../core/models';
     @media (max-width: 768px) {
       .features {
         padding: 4rem 0;
+      }
+
+      .features-row {
+        flex-direction: column;
+        gap: 2rem;
       }
 
       .section-title {
